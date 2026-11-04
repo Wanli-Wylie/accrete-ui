@@ -1,0 +1,86 @@
+:root {
+  color-scheme: dark;
+  --bg: #16181c;
+  --bg-raised: #1e2127;
+  --fg: #d8dbe0;
+  --muted: #8b919b;
+  --border: #2e323a;
+  --accent: #7aa2f7;
+}
+
+/* The panels follow the system; the terminal stays dark, as its programs expect. */
+@media (prefers-color-scheme: light) {
+  :root {
+    color-scheme: light;
+    --bg: #f7f7f5;
+    --bg-raised: #eeeeeb;
+    --fg: #1f2328;
+    --muted: #646b75;
+    --border: #d8d9d5;
+    --accent: #2f5fd0;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.45 system-ui, sans-serif;
+}
+
+body {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr);
+  height: 100vh;
+  overflow: hidden;
+}
+
+#terminal {
+  min-width: 0;
+  min-height: 0;
+  background: #101114;
+}
+/* The padding belongs on .xterm because the fit addon only subtracts it from there. */
+#terminal .xterm {
+  height: 100%;
+  padding: 6px 0 6px 8px;
+}
+#terminal .xterm-viewport { background-color: #101114; }
+
+aside {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  border-left: 1px solid var(--border);
+}
+
+#tabs {
+  display: flex;
+  flex: none;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-raised);
+}
+#tabs button {
+  padding: 8px 14px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+#tabs button[aria-selected="true"] {
+  color: var(--fg);
+  border-bottom-color: var(--accent);
+}
+
+#panels {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+}
+#panels > section { padding: 12px; }

@@ -1,0 +1,35 @@
+/* Styles for the running panel. Scope them under #panel-running. */
+#panel-running .head { margin-bottom: 8px; }
+#panel-running .quiet { color: var(--muted); }
+
+#panel-running .tree {
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+}
+#panel-running .process { min-width: 0; }
+#panel-running .process .process {
+  margin: 4px 0 0 4px;
+  padding-left: 8px;
+  border-left: 1px solid var(--border);
+}
+#panel-running .command {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font: 12px ui-monospace, Menlo, monospace;
+}
+#panel-running .evidence {
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+#panel-running .file { margin-top: 6px; }
+#panel-running .path { color: var(--fg); }
+#panel-running pre {
+  margin: 2px 0 0;
+  padding: 4px 6px;
+  overflow-x: auto;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  font: 12px/1.4 ui-monospace, Menlo, monospace;
+}

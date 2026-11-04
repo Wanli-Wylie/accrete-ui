@@ -1,0 +1,61 @@
+/* Styles for the agents panel. Scope them under #panel-agents. */
+#panel-agents .head { margin-bottom: 8px; }
+#panel-agents .foot { margin-top: 12px; }
+#panel-agents .quiet { color: var(--muted); }
+
+#panel-agents .session {
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+  overflow-wrap: anywhere;
+}
+#panel-agents .row { display: block; }
+#panel-agents .agent,
+#panel-agents .kind {
+  color: var(--muted);
+  font-size: 12px;
+}
+#panel-agents .title { color: var(--muted); }
+#panel-agents .has-process > .row > .title,
+#panel-agents .subagent .title { color: var(--fg); }
+
+#panel-agents .cwd,
+#panel-agents .evidence {
+  color: var(--muted);
+  font-size: 12px;
+}
+#panel-agents .tool {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  min-width: 0;
+  font-size: 12px;
+}
+#panel-agents .tool-name { flex: none; color: var(--accent); }
+#panel-agents .tool code {
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font: 12px ui-monospace, Menlo, monospace;
+}
+#panel-agents .tool > .quiet { flex: none; white-space: nowrap; }
+
+#panel-agents .subagents { margin-top: 4px; }
+#panel-agents .subagents > summary {
+  color: var(--muted);
+  font-size: 12px;
+  cursor: pointer;
+}
+#panel-agents .subagent {
+  margin: 4px 0 0 4px;
+  padding-left: 8px;
+  border-left: 1px solid var(--border);
+}
+#panel-agents .unattached {
+  padding: 8px 0;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}

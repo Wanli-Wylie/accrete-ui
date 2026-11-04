@@ -1,0 +1,27 @@
+{
+  "name": "accrete-ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local web UI for watching an ACCRETE Workspace, with a real terminal",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bin": {
+    "accrete-ui": "bin/accrete-ui.mjs"
+  },
+  "scripts": {
+    "start": "node bin/accrete-ui.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "@xterm/addon-fit": "0.11.0",
+    "@xterm/addon-unicode11": "0.9.0",
+    "@xterm/addon-webgl": "0.19.0",
+    "@xterm/xterm": "6.0.0",
+    "node-pty": "1.1.0",
+    "ws": "8.22.1"
+  }
+}

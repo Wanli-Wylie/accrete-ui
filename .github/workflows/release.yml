@@ -1,0 +1,30 @@
+name: Release
+# A version tag builds the bundle and publishes it as a GitHub Release: one archive and
+# SHA256SUMS. accrete-kit embeds them, so this release comes before the kit's.
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: read
+jobs:
+  release:
+    runs-on: macos-15
+    permissions:
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      TAG: ${{ github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: The tag names this package version
+        run: test "${TAG#v}" = "$(node -p "require('./package.json').version")"
+      - run: brew install tmux
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - name: Create the release
+        run: gh release create "$TAG" --verify-tag --title "$TAG" --notes "accrete-ui ${TAG#v}" "dist/accrete-ui-${TAG#v}.tar.gz" dist/SHA256SUMS

@@ -1,0 +1,80 @@
+/* Each panel scrolls itself, so moving between tabs keeps each one's place. */
+#panels > #panel-activity {
+  height: 100%;
+  overflow: auto;
+  padding: 0;
+}
+
+#panel-activity .head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 6px 12px 5px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+}
+#panel-activity .git { overflow-wrap: anywhere; }
+#panel-activity .receipts {
+  margin: 3px 0;
+  padding-left: 8px;
+  border-left: 2px solid var(--accent);
+  overflow-wrap: anywhere;
+}
+#panel-activity .receipts:empty { display: none; }
+#panel-activity .note {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+#panel-activity .feed {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 8px 0;
+}
+#panel-activity .item {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  padding: 2px 4px;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 12px;
+  text-align: left;
+}
+#panel-activity .item.live { color: var(--fg); }
+#panel-activity button.item { cursor: pointer; }
+#panel-activity button.item:hover {
+  background: var(--bg-raised);
+  color: var(--fg);
+}
+#panel-activity .when {
+  flex: none;
+  min-width: 56px;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+#panel-activity .what {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+#panel-activity .detail { color: var(--muted); }
+#panel-activity .empty {
+  padding: 4px;
+  color: var(--muted);
+  font-size: 12px;
+}
+#panel-activity .more {
+  margin: 4px 12px 16px;
+  padding: 2px 0;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+#panel-activity .more:hover { text-decoration: underline; }

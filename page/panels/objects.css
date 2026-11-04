@@ -1,0 +1,155 @@
+/* Each panel scrolls itself, so moving between tabs keeps each one's place. */
+#panels > #panel-objects {
+  height: 100%;
+  overflow: auto;
+  padding: 0;
+}
+
+#panel-objects .head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+#panel-objects .types {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  padding: 6px 8px 4px;
+}
+#panel-objects .type {
+  padding: 2px 6px;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+}
+#panel-objects .type:hover { color: var(--fg); }
+#panel-objects .type.current {
+  background: var(--bg-raised);
+  color: var(--fg);
+}
+#panel-objects .count { font-variant-numeric: tabular-nums; opacity: 0.8; }
+
+#panel-objects .notice {
+  padding: 0 12px 5px;
+  font-size: 12px;
+  color: var(--muted);
+}
+#panel-objects .notice:empty { display: none; }
+#panel-objects .behind {
+  margin: 2px 0 4px;
+  padding: 3px 0 3px 8px;
+  border-left: 2px solid var(--accent);
+  color: var(--fg);
+}
+#panel-objects .sample {
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+#panel-objects code {
+  font: 12px ui-monospace, Menlo, monospace;
+  color: var(--fg);
+  user-select: all;
+}
+
+#panel-objects .body { padding: 8px 8px 16px; }
+#panel-objects .empty {
+  padding: 4px 4px;
+  color: var(--muted);
+}
+
+#panel-objects .rows { display: flex; flex-direction: column; }
+#panel-objects .row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 8px;
+  width: 100%;
+  padding: 2px 4px;
+  border: 0;
+  border-radius: 3px;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+#panel-objects button.row:hover { background: var(--bg-raised); }
+#panel-objects .row.plain { cursor: default; }
+#panel-objects .primary {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+#panel-objects .row.absent .primary { color: var(--muted); }
+#panel-objects .id,
+#panel-objects .facts,
+#panel-objects .status,
+#panel-objects .time,
+#panel-objects .tag,
+#panel-objects .detail {
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+#panel-objects .time {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+#panel-objects .tag { font-style: italic; }
+
+#panel-objects .more,
+#panel-objects .back {
+  margin: 4px 0;
+  padding: 2px 4px;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+#panel-objects .more:hover,
+#panel-objects .back:hover { text-decoration: underline; }
+
+#panel-objects h2 {
+  margin: 4px 4px 2px;
+  font-size: 14px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+#panel-objects h2 .kind {
+  color: var(--muted);
+  font-weight: 400;
+}
+#panel-objects .meta {
+  margin: 0 4px;
+  color: var(--muted);
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+#panel-objects .body .behind { margin: 4px; font-size: 12px; }
+
+#panel-objects .relation { margin-top: 12px; }
+#panel-objects h3 {
+  margin: 0 4px 2px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+#panel-objects .document {
+  margin: 4px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: var(--bg-raised);
+  font: 12px/1.45 ui-monospace, Menlo, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
