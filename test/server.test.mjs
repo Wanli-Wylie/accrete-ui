@@ -302,7 +302,7 @@ test('output pauses while the page is behind and resumes when it catches up', as
   let acking = false;
   ws.on('message', (data) => {
     received += data.length;
-    tail = (tail + data).slice(-100);
+    tail = (tail + data).slice(-4000); // room for whatever prompt this machine prints after it
     if (acking) ws.send(JSON.stringify({ ack: data.length }));
   });
   type(ws, 'yes flood | head -c 8000000; echo flood-$((40+2))\r');
@@ -316,7 +316,10 @@ test('output pauses while the page is behind and resumes when it catches up', as
 
   acking = true;
   ws.send(JSON.stringify({ ack: received }));
-  await until(() => tail.includes('flood-42'), 'the flood to finish', 60000);
+  await until(() => tail.includes('flood-42'), 'the flood to finish', 60000).catch((err) => {
+    err.message += ` after ${received} bytes; output ended ${JSON.stringify(tail.slice(-300))}`;
+    throw err;
+  });
   ws.terminate();
 });
 
